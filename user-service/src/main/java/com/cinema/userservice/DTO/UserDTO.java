@@ -22,4 +22,6 @@ public class UserDTO {
 
     @NotBlank(message = "Repeat password should not be empty")
     private String repeatPassword;
+
+    private double money;
 }

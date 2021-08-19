@@ -17,11 +17,13 @@ public class User {
     private int id;
     private String email;
     private String password;
+    private double money;
 
     public UserDTO toDTO() {
         UserDTO userDTO = new UserDTO();
         userDTO.setEmail(email);
         userDTO.setId(id);
+        userDTO.setMoney(money);
 
         return userDTO;
     }
