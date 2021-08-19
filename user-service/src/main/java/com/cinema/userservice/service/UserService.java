@@ -15,8 +15,8 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public UserDTO createUser(UserDTO userDTO){
-        if(!userDTO.getPassword().equals(userDTO.getRepeatPassword())){
+    public UserDTO createUser(UserDTO userDTO) {
+        if (!userDTO.getPassword().equals(userDTO.getRepeatPassword())) {
             throw new RuntimeException();
         }
 
@@ -26,7 +26,17 @@ public class UserService {
         return userRepository.save(user).toDTO();
     }
 
-    public UserDTO getUser(int id){
+    public UserDTO getUser(int id) {
         return userRepository.getById(id).toDTO();
+    }
+
+    public void deleteUser(int id) {
+        userRepository.deleteById(id);
+    }
+
+    public UserDTO updateUser(int id, UserDTO userDTO) {
+        userRepository.updateUser(userDTO.getEmail(), userDTO.getPassword(), id);
+
+        return getUser(id);
     }
 }
