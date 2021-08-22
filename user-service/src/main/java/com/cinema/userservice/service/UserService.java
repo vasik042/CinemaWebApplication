@@ -39,4 +39,9 @@ public class UserService {
 
         return getUser(id);
     }
+
+    public boolean logIn(UserDTO userDTO) {
+        User user = userRepository.findByEmail(userDTO.getEmail());
+        return user.getPassword().equals(userDTO.getPassword());
+    }
 }

@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/")
 public class UserController {
     UserService userService;
 
@@ -36,6 +35,12 @@ public class UserController {
     @RequestMapping(method = RequestMethod.GET)
     String ok(){
         return "Ok";
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(method = RequestMethod.POST, value = "/logIn")
+    boolean logIn(@Valid @RequestBody UserDTO userDTO){
+        return userService.logIn(userDTO);
     }
 
     @ResponseStatus(HttpStatus.OK)
