@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/")
 public class UserController {
     UserService userService;
 
@@ -30,6 +30,12 @@ public class UserController {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
     UserDTO getUser(@PathVariable int id){
         return userService.getUser(id);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(method = RequestMethod.GET)
+    String ok(){
+        return "Ok";
     }
 
     @ResponseStatus(HttpStatus.OK)
